@@ -1,0 +1,19 @@
+@media only screen and (max-width: 576px) {
+    .cart {
+        display: flex;
+        justify-content: center !important;
+
+    }
+}
+
+.header{
+    height: 80px ;
+    background-color: #c1d6eb;
+}
+  .nav-link{
+    text-decoration: none;
+    color: black;
+    padding: 10px 30px !important;
+    cursor: pointer;  
+    font-weight: 600;
+  }
