@@ -21,7 +21,7 @@ function Product() {
      {product && product.products.map((item,index) => {
         return (
           <div key={index} className="cart col-lg-3 col-md-4 col-sm-6 col-12 mb-4 mt-4 " >
-            <ProductCard key={index} title={item.title} description={item.description} image={item.images[0]} id={item.id} />
+            <ProductCard key={index} title={item.title} description={item.description} image={item.thumbnail} id={item.id} price={item.price} />
           </div>
         )
       })}

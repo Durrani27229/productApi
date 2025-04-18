@@ -1,8 +1,12 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
 import useFetch from '../Hooks/useFetch'
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { addToCart } from '../config/redux/reducer/cartSlice';
 
 const SingleProduct = () => {
+     const dispatch = useDispatch();
     const params = useParams()
     const [loading, error, data] = useFetch(`https://dummyjson.com/products/${params.id}`)
 
@@ -84,9 +88,22 @@ const SingleProduct = () => {
                         </p>
                     </div>
                     {/* Add to Cart Button */}
-                    <button className="btn btn-primary w-100 py-3 fw-semibold">
-                        Add to Cart
-                    </button>
+                    <button
+  className="btn btn-primary w-100 py-3 fw-semibold"
+  onClick={() =>
+    dispatch(
+      addToCart({
+        title: data.title,
+        description: data.description,
+        image: data.images[0],
+        id: data.id,
+        price: data.price,
+      })
+    )
+  }
+>
+  Add to Cart
+</button>
                 </div>
             </div>
         </div>

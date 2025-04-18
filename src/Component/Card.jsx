@@ -8,9 +8,14 @@ import CardActionArea from '@mui/material/CardActionArea';
 import CardActions from '@mui/material/CardActions';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { addToCart } from '../config/redux/reducer/cartSlice';
 
 
-function ProductCard({title, description, image , id}) {
+function ProductCard({title, description, image , id , price}) {
+
+
+    const dispatch = useDispatch();
     const navigate = useNavigate();
   return (
     <Card sx={{ maxWidth: 345 }}>
@@ -36,6 +41,9 @@ function ProductCard({title, description, image , id}) {
       <CardActions>
         <Button size="small" color="primary">
          <Link to={`/product/${id}`} className='text-decoration-none'>See More</Link>
+        </Button>
+        <Button size="small" color="primary" onClick={() => dispatch(addToCart({title, description, image , id, price}))}>
+          Add to Cart 
         </Button>
       </CardActions>
     </Card>
